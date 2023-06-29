@@ -1,0 +1,23 @@
+---
+version: '3'
+services:
+  dev-postgres:
+    image: postgres
+    environment:
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=student
+    networks:
+    - student
+    volumes:
+    - pgdata:/var/lib/postgresql/data
+  student001:
+    build: .
+    ports:
+    - 5000:5000
+    networks:
+    - student
+volumes:
+  pgdata:
+networks:
+  student:
+...
