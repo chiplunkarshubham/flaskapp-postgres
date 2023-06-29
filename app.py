@@ -5,6 +5,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@dev-postgres:5432/student'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+// 'postgresql://<username>:<password>@<db-container-name/db-service-name>:5432/<db-name>'
+
 db.init_app(app)
 
 with app.app_context():
