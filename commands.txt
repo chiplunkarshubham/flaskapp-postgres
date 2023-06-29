@@ -1,0 +1,9 @@
+yum update -y
+yum install -y git
+git clone https://github.com/chiplunkarshubham/flaskapp-postgres.git
+cd flaskapp-postgres
+docker volume create pgdata
+docker network create student
+docker run -d --name dev-postgres -v pgdata:/var/lib/postgresql/data --network student -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=student postgres
+docker build -t studentimage .
+docker run --name student001 --network student -p 5000:5000 studentimage (Open port 5000 in AWS Inbound rules inorder to access)
